@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import {API} from "./Global.js";
 
 export default function Movie({movieTake,getmovies}) {
   
@@ -22,7 +23,7 @@ export default function Movie({movieTake,getmovies}) {
   const navigate = useNavigate();
 
   const deletemovie=(x)=>{
-    fetch(`https://65f27041034bdbecc764ca17.mockapi.io/back/hhhu/${x}`, {
+    fetch(`${API}/delete/${x}`, {
   method: 'DELETE',
 }).then(()=>getmovies()).then(()=>alert(movieTake.name+"Movie  was deleted Successfully!!"));
   }
@@ -36,7 +37,7 @@ export default function Movie({movieTake,getmovies}) {
             {show ?<ExpandLessIcon fontSize='large' />:<ExpandMoreIcon fontSize='large'/>}  
             </IconButton>
 
-            <IconButton color="primary" aria-label="movie-info" onClick={()=>navigate(`/portal/view/${movieTake.id}`)}>
+            <IconButton color="primary" aria-label="movie-info" onClick={()=>navigate(`/portal/view/${movieTake._id}`)}>
             <InfoIcon fontSize='medium' />
             </IconButton>
             {/* <Link href={movieTake.trailer} >{}</Link> */}
@@ -48,8 +49,8 @@ export default function Movie({movieTake,getmovies}) {
        {show ? <p className='movie-summary'>{movieTake.summary}</p>:null}
         <CardActions>
         <Counter/>
-        <IconButton sx={{marginLeft:"auto"}} aria-label='editMovies' onClick={()=>{navigate(`/portal/edit/${movieTake.id}`)}} ><EditIcon /></IconButton>
-        <IconButton sx={{marginLeft:"auto"}} aria-label='deleteMovies' onClick={()=>deletemovie(movieTake.id)} ><DeleteIcon /></IconButton>
+        <IconButton sx={{marginLeft:"auto"}} aria-label='editMovies' onClick={()=>{navigate(`/portal/edit/${movieTake._id}`)}} ><EditIcon /></IconButton>
+        <IconButton sx={{marginLeft:"auto"}} aria-label='deleteMovies' onClick={()=>deletemovie(movieTake._id)} ><DeleteIcon /></IconButton>
         </CardActions>
     </Card>
   )

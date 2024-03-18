@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import Button from '@mui/material/Button';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router';
+import { API } from './Global';
 export default function MovieDetials() {
     const{id}=useParams();
     console.log(id);
@@ -13,7 +14,7 @@ export default function MovieDetials() {
 
    
     useEffect(()=>{
-        fetch(`https://65f27041034bdbecc764ca17.mockapi.io/back/hhhu/${id}`,{method:"GET"})
+        fetch(`${API}/getone/${id}`,{method:"GET"})
         .then((data)=>data.json()).then((mv)=>setMovie(mv));
     },[]);
 

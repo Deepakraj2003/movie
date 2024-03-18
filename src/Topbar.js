@@ -9,6 +9,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import Brightness7 from '@mui/icons-material/Brightness7';
 import { useNavigate } from 'react-router-dom';
+import { Logout } from './Logout';
 
 export default function Topbar({mode,setmode}) {
  const navigate=useNavigate();
@@ -25,7 +26,7 @@ export default function Topbar({mode,setmode}) {
          onClick={()=>setmode(mode==="dark"? "light": "dark")}>
            {mode==="dark" ? "light":"dark"}Mode
          </Button>
-          <Button color="inherit" onClick={()=>navigate("/")}>Login</Button>
+          <Button color="inherit" onClick={()=>Logout()}>Logout</Button>
         </Toolbar>
       </AppBar>
     </Box>

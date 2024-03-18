@@ -1,0 +1,1 @@
+A movie portal which show info about the movies
