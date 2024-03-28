@@ -5,7 +5,7 @@ export default function Movielist() {
 
     const [movie,setMovie]=useState([]);
     const getmovies=()=>{
-        fetch(`${API}/getmany`,{method:"GET",
+        fetch(`${API}getmany`,{method:"GET",
         headers:{"backend-token":localStorage['storetoken']}
     })
     .then((data)=>data.json())
